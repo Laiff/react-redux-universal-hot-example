@@ -14,7 +14,6 @@ import { WidgetForm } from 'components';
     loading: state.widgets.loading
   }),
   {...widgetActions, initializeWithKey })
-export default
 class Widgets extends Component {
   static propTypes = {
     widgets: PropTypes.array,
@@ -24,7 +23,7 @@ class Widgets extends Component {
     editing: PropTypes.object.isRequired,
     load: PropTypes.func.isRequired,
     editStart: PropTypes.func.isRequired
-  }
+  };
 
   static fetchDataDeferred(getState, dispatch) {
     if (!isLoaded(getState())) {
@@ -104,3 +103,4 @@ class Widgets extends Component {
   }
 }
 
+export default Widgets;

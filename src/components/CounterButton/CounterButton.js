@@ -5,16 +5,16 @@ import {increment} from 'redux/modules/counter';
 @connectMultireducer(
   state => ({count: state.count}),
   {increment})
-export default class CounterButton extends Component {
+class CounterButton extends Component {
   static propTypes = {
     count: PropTypes.number,
     increment: PropTypes.func.isRequired,
     className: PropTypes.string
-  }
+  };
 
   props = {
     className: ''
-  }
+  };
 
   render() {
     const {count, increment} = this.props; // eslint-disable-line no-shadow
@@ -28,3 +28,4 @@ export default class CounterButton extends Component {
   }
 }
 
+export default CounterButton;

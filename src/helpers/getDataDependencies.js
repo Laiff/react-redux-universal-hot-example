@@ -1,15 +1,22 @@
-const getDataDependency = (component = {}, methodName) => {
-  return component.WrappedComponent ?
-    getDataDependency(component.WrappedComponent, methodName) :
-    component[methodName];
-};
+const isNotNull = mayBePresent => !!mayBePresent;
+
+function withMethod(methodName) {
+  return function withComponent(component) {
+    return component.WrappedComponent ?
+      withComponent(component.WrappedComponent) :
+      component[methodName];
+  };
+}
+
+const fetchData = withMethod('fetchData');
+const fetchDataDeferred = withMethod('fetchDataDeferred');
 
 export default (components, getState, dispatch, location, params, deferred) => {
-  const methodName = deferred ? 'fetchDataDeferred' : 'fetchData';
+  const toFetcher = deferred ? fetchDataDeferred : fetchData;
+  const toPromise = fetcher => fetcher(getState, dispatch, location, params);
 
   return components
-    .filter((component) => getDataDependency(component, methodName)) // only look at ones with a static fetchData()
-    .map((component) => getDataDependency(component, methodName))    // pull out fetch data methods
-    .map(fetchData =>
-      fetchData(getState, dispatch, location, params));  // call fetch data methods and save promises
+    .map(toFetcher)
+    .filter(isNotNull)
+    .map(toPromise);
 };

@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 @connect(
   state => ({user: state.auth.user})
 )
-export default
 class Chat extends Component {
   static propTypes = {
     user: PropTypes.object
@@ -81,3 +80,5 @@ class Chat extends Component {
     );
   }
 }
+
+export default Chat;

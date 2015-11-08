@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 
 export default class GithubButton extends Component {
+
   static propTypes = {
     user: PropTypes.string.isRequired,
     repo: PropTypes.string.isRequired,
@@ -9,7 +10,7 @@ export default class GithubButton extends Component {
     height: PropTypes.number.isRequired,
     count: PropTypes.bool,
     large: PropTypes.bool
-  }
+  };
 
   render() {
     const {user, repo, type, width, height, count, large} = this.props;

@@ -13,7 +13,7 @@ import config from '../../config';
 @connect(
   state => ({user: state.auth.user}),
   {logout, pushState})
-export default class App extends Component {
+class App extends Component {
   static propTypes = {
     children: PropTypes.object.isRequired,
     user: PropTypes.object,
@@ -117,3 +117,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default App;

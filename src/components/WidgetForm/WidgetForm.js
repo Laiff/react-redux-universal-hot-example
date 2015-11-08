@@ -16,7 +16,7 @@ import * as widgetActions from 'redux/modules/widgets';
   fields: ['id', 'color', 'sprocketCount', 'owner'],
   validate: widgetValidation
 })
-export default class WidgetForm extends Component {
+class WidgetForm extends Component {
   static propTypes = {
     fields: PropTypes.object.isRequired,
     editStop: PropTypes.func.isRequired,
@@ -74,3 +74,5 @@ export default class WidgetForm extends Component {
     );
   }
 }
+
+export default WidgetForm;

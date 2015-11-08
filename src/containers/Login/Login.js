@@ -6,12 +6,12 @@ import * as authActions from 'redux/modules/auth';
 @connect(
   state => ({user: state.auth.user}),
   authActions)
-export default class Login extends Component {
+class Login extends Component {
   static propTypes = {
     user: PropTypes.object,
     login: PropTypes.func,
     logout: PropTypes.func
-  }
+  };
 
   handleSubmit(event) {
     event.preventDefault();
@@ -50,3 +50,5 @@ export default class Login extends Component {
     );
   }
 }
+
+export default Login;

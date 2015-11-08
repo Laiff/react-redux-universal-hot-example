@@ -5,7 +5,7 @@ import 'babel/polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import createHistory from 'history/lib/createBrowserHistory';
-import createStore from './redux/create';
+import createReduxStore from './redux/create';
 import ApiClient from './helpers/ApiClient';
 import io from 'socket.io-client';
 import {Provider} from 'react-redux';
@@ -17,7 +17,7 @@ import makeRouteHooksSafe from './helpers/makeRouteHooksSafe';
 const client = new ApiClient();
 
 const dest = document.getElementById('content');
-const store = createStore(reduxReactRouter, makeRouteHooksSafe(getRoutes), createHistory, client, window.__data);
+const store = createReduxStore(reduxReactRouter, makeRouteHooksSafe(getRoutes), createHistory, client, window.__data);
 
 function initSocket() {
   const socket = io('', {path: '/api/ws', transports: ['polling']});
